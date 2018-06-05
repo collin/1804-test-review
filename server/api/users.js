@@ -12,3 +12,8 @@ router.get('/', (req, res, next) => {
     .then(users => res.json(users))
     .catch(next)
 })
+
+router.get('/true', (req, res, next) => {
+  res.json(true)
+})
+
