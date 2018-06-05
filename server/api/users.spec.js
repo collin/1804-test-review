@@ -7,10 +7,6 @@ const app = require('../index')
 const User = db.model('user')
 
 describe('User routes', () => {
-  beforeEach(() => {
-    return db.sync({force: true})
-  })
-
   describe('/api/users/', () => {
     const codysEmail = 'cody@puppybook.com'
 
@@ -18,6 +14,11 @@ describe('User routes', () => {
       return User.create({
         email: codysEmail
       })
+    })
+
+    it('GET /api/users/true', async () => {
+      const res = await request(app).get('/api/users/true').expect(200)
+      expect(res.body).to.be.true
     })
 
     it('GET /api/users', () => {
